@@ -1,0 +1,387 @@
+/* Resets default spacing and uses predictable sizing throughout the app. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-top: #f5eee6;
+    --bg-bottom: #e7eef8;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: #ffffff;
+    --panel-soft: #f7f4ef;
+    --text-main: #1f2937;
+    --text-muted: #5f6c80;
+    --line: rgba(91, 110, 133, 0.18);
+    --shadow: 0 24px 60px rgba(30, 41, 59, 0.14);
+    --shadow-soft: 0 16px 30px rgba(30, 41, 59, 0.08);
+    --green: #176b52;
+    --green-hover: #0f5742;
+    --rose: #bf4b63;
+    --rose-hover: #a03850;
+    --accent: #355cde;
+    --accent-soft: rgba(53, 92, 222, 0.08);
+}
+
+/* Centers the app and builds a softer layered background. */
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 20px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(53, 92, 222, 0.12), transparent 28%),
+        linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+}
+
+/* Styles the main application card. */
+.container {
+    width: min(100%, 920px);
+    padding: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 28px;
+    background: var(--panel);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+}
+
+/* Creates a stronger visual header for the app. */
+.hero {
+    margin-bottom: 24px;
+}
+
+/* Small label above the title for a product feel. */
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(23, 107, 82, 0.1);
+    color: var(--green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+/* Highlights the app name with more personality. */
+h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+}
+
+/* Supports the main heading with lighter context. */
+.hero-copy {
+    max-width: 620px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Styles the in-app help dropdown. */
+.directions-section {
+    margin-bottom: 24px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--panel-strong);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+/* Styles the clickable dropdown heading. */
+.directions-section summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 22px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+/* Hides the native browser dropdown marker. */
+.directions-section summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Adds a rounded icon cue to the help dropdown. */
+.directions-section summary::after {
+    content: "+";
+    float: right;
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* Switches the icon when the help section opens. */
+.directions-section[open] summary::after {
+    content: "-";
+}
+
+/* Spaces the opened help content. */
+.directions-content {
+    padding: 0 22px 20px;
+}
+
+/* Styles paragraph text inside the directions area. */
+.directions-section p,
+.directions-list {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Adds room around the list of steps. */
+.directions-list {
+    margin: 12px 0 12px 22px;
+}
+
+/* Spaces out each instruction for readability. */
+.directions-list li + li {
+    margin-top: 8px;
+}
+
+/* Slightly reduces the note size to feel secondary. */
+.directions-note {
+    font-size: 0.95rem;
+}
+
+/* Lays out the input and action buttons in a modern responsive row. */
+.task-input-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) repeat(3, auto);
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+/* Styles the task input with a softer modern field treatment. */
+#taskInput {
+    min-width: 0;
+    padding: 16px 18px;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background: var(--panel-strong);
+    box-shadow: inset 0 0 0 1px rgba(91, 110, 133, 0.15);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Makes the input feel interactive when focused. */
+#taskInput:focus {
+    box-shadow: inset 0 0 0 2px rgba(53, 92, 222, 0.45), 0 0 0 4px rgba(53, 92, 222, 0.09);
+    transform: translateY(-1px);
+}
+
+/* Shared button styling for all actions. */
+button {
+    border: none;
+    border-radius: 16px;
+    padding: 15px 18px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Adds a subtle lift when buttons are hovered. */
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Styles the add action as the primary button. */
+#addTaskBtn {
+    background: linear-gradient(135deg, #1e8b6d, var(--green));
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(23, 107, 82, 0.22);
+}
+
+/* Deepens the primary button on hover. */
+#addTaskBtn:hover {
+    background: linear-gradient(135deg, #19755c, var(--green-hover));
+}
+
+/* Styles the delete action with a modern warm accent. */
+#deleteTaskBtn {
+    background: linear-gradient(135deg, #d6677e, var(--rose));
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(191, 75, 99, 0.18);
+}
+
+/* Deepens the delete button on hover. */
+#deleteTaskBtn:hover {
+    background: linear-gradient(135deg, #c6546c, var(--rose-hover));
+}
+
+/* Styles the clear button as a softer secondary action. */
+#clearAllBtn {
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--text-main);
+    border: 1px solid var(--line);
+}
+
+/* Adds a brighter hover state for the clear button. */
+#clearAllBtn:hover {
+    background: #ffffff;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Styles inline feedback messages below the action row. */
+.status-message {
+    min-height: 28px;
+    margin-bottom: 16px;
+    padding: 0 4px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Shows the status message when content is active. */
+.status-message.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styles positive feedback. */
+.status-message.is-success {
+    color: var(--green);
+}
+
+/* Styles error feedback. */
+.status-message.is-error {
+    color: var(--rose);
+}
+
+/* Creates a small header for the task list section. */
+.task-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Styles the task list heading. */
+.task-list-header h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: -0.03em;
+}
+
+/* Styles the live task count. */
+#taskCount {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(53, 92, 222, 0.08);
+    color: var(--accent);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+/* Removes the default list styling and creates spacing between tasks. */
+#taskList {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+}
+
+/* Styles the empty state when no tasks are available. */
+.empty-state {
+    padding: 22px 18px;
+    border: 1px dashed rgba(91, 110, 133, 0.22);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.52);
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.7;
+}
+
+/* Hides utility elements when JavaScript marks them as hidden. */
+.is-hidden {
+    display: none;
+}
+
+/* Styles each task as a modern card row. */
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1px solid rgba(91, 110, 133, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Adds a decorative status dot before the task label. */
+.task-item::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #7dd3a7, #355cde);
+    flex-shrink: 0;
+}
+
+/* Styles the visible task text. */
+.task-text {
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.5;
+    word-break: break-word;
+    flex: 1;
+}
+
+/* Adds a soft credit footer at the bottom of the app card. */
+.app-footer {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+}
+
+/* Styles the author credit text. */
+.app-footer p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+}
+
+/* Improves spacing and wrapping on smaller screens. */
+@media (max-width: 780px) {
+    body {
+        padding: 24px 14px;
+    }
+
+    .container {
+        padding: 24px 18px;
+        border-radius: 24px;
+    }
+
+    .task-input-section {
+        grid-template-columns: 1fr;
+    }
+
+    .task-list-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page character encoding. -->
+    <meta charset="UTF-8">
+    <!-- Makes the layout responsive on phones and tablets. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Text shown in the browser tab. -->
+    <title>Task Manager | Modern Task Manager</title>
+    <!-- Loads a more expressive font pairing for the refreshed UI. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Connects the page to the stylesheet. -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main app container. -->
+    <div class="container">
+        <!-- App header with a small product-style introduction. -->
+        <header class="hero">
+            <p class="eyebrow">Simple workflow</p>
+            <h1>Task Manager</h1>
+            <p class="hero-copy">A cleaner way to capture tasks, remove clutter, and keep your list focused.</p>
+        </header>
+
+        <!-- Simple directions so users can understand the app at a glance. -->
+        <details class="directions-section">
+            <summary id="directionsHeading">How to Use This Task Manager</summary>
+            <div class="directions-content" aria-labelledby="directionsHeading">
+                <p>Use the input box below to add, delete, or clear tasks from your list.</p>
+                <ol class="directions-list">
+                    <li>Type a task name and click <strong>Add Task</strong> or press <strong>Enter</strong> to add it.</li>
+                    <li>Type the name of an existing task and click <strong>Delete Task</strong> to remove the first match.</li>
+                    <li>Click <strong>Clear All</strong> to remove every task from the list at once.</li>
+                </ol>
+                <p class="directions-note">Tip: delete matches the full task name and ignores uppercase or lowercase differences.</p>
+            </div>
+        </details>
+
+        <!-- Input and action buttons for managing tasks. -->
+        <div class="task-input-section">
+            <!-- Text box used for both adding and deleting tasks by name. -->
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <!-- Adds a new task to the list. -->
+            <button id="addTaskBtn">Add Task</button>
+            <!-- Deletes a task whose name matches the typed text. -->
+            <button id="deleteTaskBtn">Delete Task</button>
+            <!-- Removes every task from the list. -->
+            <button id="clearAllBtn">Clear All</button>
+        </div>
+
+        <!-- Inline feedback area for app messages. -->
+        <p id="statusMessage" class="status-message" aria-live="polite"></p>
+
+        <!-- Small status row for the task area. -->
+        <div class="task-list-header">
+            <h2>Your Tasks</h2>
+            <p id="taskCount">0 tasks</p>
+        </div>
+
+        <!-- Container where tasks are added dynamically with JavaScript. -->
+        <ul id="taskList"></ul>
+        <p id="emptyState" class="empty-state">No tasks yet. Add your first one to get started.</p>
+
+        <!-- Footer credit for the project author. -->
+        <footer class="app-footer">
+            <p>Designed and built by Greg Killman.</p>
+        </footer>
+    </div>
+
+    <!-- Loads the app behavior after the page markup is available. -->
+    <script src="script.js"></script>
+</body>
+</html>
